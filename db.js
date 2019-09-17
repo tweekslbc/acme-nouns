@@ -56,17 +56,22 @@ const syncAndSeed = async()=>{
         {name: 'THE_CLOSEST_711_1', placeId: THE_CLOSEST_711.id}
     ]
     const [RIO_1, NEVERLAND_1, PARIS_1, THE_CLOSEST_711_1] = await Promise.all(people.map(person => Person.create(person)));
-    const places = [
-        {name: 'RIO_2', peopleId: NEVERLAND_1.id},
+    const things = [
+        {name: 'RIO_2', peopleId: RIO_1.id},
         {name: 'NEVERLAND_2', peopleId: NEVERLAND_1.id},
-        {name: 'PARIS_2', peopleId: NEVERLAND_1.id},
+        {name: 'PARIS_2', peopleId: PARIS_1.id},
         {name: 'THE_CLOSEST_711_2', peopleId: THE_CLOSEST_711_1.id}
     ]
-    const [RIO, NEVERLAND, PARIS, THE_CLOSEST_711] = await Promise.all(places.map(place => (place)));
+    await Promise.all(things.map(thing => Thing.create(thing)));
 }
 
 module.exports = {
-
+    syncAndSeed,
+    models: {
+        Person,
+        Place,
+        Thing
+    }
 }
 
 syncAndSeed();
