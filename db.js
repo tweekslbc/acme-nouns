@@ -1,10 +1,11 @@
 const Sequelize = require('sequelize')
 const {STRING, UUID, UUIDV4} = Sequelize
 
-const conn = new Sequelize('postgress://localhost/acme_seq_db')
+const conn = new Sequelize('postgres://fzyiwkovbtfdsj:6407e97cf5351bd08640071266adb7c57dc29fc70340cd429fce5fcb44d0932a@ec2-107-22-160-185.compute-1.amazonaws.com:5432/d8koit0jcarg5o')
 
 const Person = conn.define('person', {
     name: {
+        type: STRING,
         allowNull: false,
         unique: true
     },
@@ -16,6 +17,7 @@ const Person = conn.define('person', {
 })
 const Place = conn.define('place', {
     name: {
+        type: STRING,
         allowNull: false,
         unique: true
     },
@@ -27,6 +29,7 @@ const Place = conn.define('place', {
 })
 const Thing = conn.define('thing', {
     name: {
+        type: STRING,
         allowNull: false,
         unique: true
     },
